@@ -1,9 +1,12 @@
 var messages = {
   en: {
     language: 'English',
-    sw_viewer: 'SignWriting Character Viewer',
+    sw_viewer: 'SignWriting Character Viewer v1',
+    sw_viewer_2: 'SignWriting Character Viewer v2',
+    index: 'Index',
     char_keys: 'Symbol Keys',
     char_uni8: 'Unicode 8',
+    char_uni10: 'Unicode 10',
     char_pua: 'PUA Plane 15',
     char_code: 'PUA Plane 16',
     lastPage: 'M508x507S2f526493x494S2f526501x494',

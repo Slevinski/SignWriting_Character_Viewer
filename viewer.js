@@ -1,8 +1,8 @@
 /**
-* SignWriting Character Viewer v1.0
+* SignWriting Character Viewer v1.1
 * https://github.com/Slevinski/SignWriting_Character_Viewer
 * https://slevinski.github.io/SignWriting_Character_Viewer
-* Copyright (c) 2007-2015, Stephen E Slevinski Jr
+* Copyright (c) 2007-2016, Stephen E Slevinski Jr
 * SignWriting Character Viewer is released under the MIT License.
 */
 
@@ -61,7 +61,9 @@ function hashChange(event){
 var header = {};
 header.controller = function(){};
 header.view = function(ctrl){
-  return [m('div',{onclick:function(e){urlSym='';hashSet();}},tt("sw_viewer")),
+  return [ m('div',{onclick:function(e){urlSym='';hashSet();}},tt("sw_viewer")),
+    m("div.topleft",m("a[href='index.html']", t("index"))),
+    m("div.topright",m("a.topright[href='SignWriting_Character_Viewer_2.html']", "v2")),
     m('div.btn',{class:urlSet=='key'?'selected':'',onclick:function(e){urlSet='key';urlSym='';hashSet();}},tt('Symbols Keys')),
     m('div.btn',{class:urlSet=='uni8'?'selected':'',onclick:function(e){urlSet='uni8';urlSym='';hashSet();}},tt('Unicode 8')),
     m('div.btn',{class:urlSet=='pua'?'selected':'',onclick:function(e){urlSet='pua';urlSym='';hashSet();}},tt('PUA Plane 15')),

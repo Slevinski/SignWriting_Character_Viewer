@@ -1,19 +1,42 @@
-<!doctype html>
-<html>
+<!DOCTYPE HTML>
+<HTML>
 <head>
-  <meta charset="utf-8"> 
-  <meta id="idviewport" name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <title>SignWriting Character Viewer</title>
-  <link rel="stylesheet" type="text/css" href="index.css" />
-  <script src="mithril.min.js"></script>
-  <script src="translate.min.js"></script>
-  <script src="sw10.min.js"></script>
-  <script src="messages.js" charset="utf-8"></script>
+  <style>
+  div {
+    float: left;
+    width: 50%;
+    text-align: center;
+    padding-top: 10%;
+  }
+  img {
+    valign:top;
+  }
+  #sp3-logo {
+    width: 173px;
+    height: 173px;
+  }
+  svg {
+    overflow: visible;
+  }
+  </style>
 </head>
 <body>
-  <div id="header"></div>
-  <div id="table"></div>
-  <script src="index.js"></script>
+<div>
+  <h2>SignWriting Character Viewer v1</h2>
+  <a href="SignWriting_Character_Viewer.html">
+    Symbol Key names with plane 16 codepoints
+    <br>Based on Private Use Area codepoints
+    <br>100,000 ligatures to support ASCII, Unicode 8, and Plane 15
+  </a>
+</div>
+
+<div>
+  <h2>SignWriting Character Viewer v2</h2>
+  <a href="SignWriting_Character_Viewer_2.html">
+    Symbol Key names with plane 4 codepoints
+    <br>No private use area and no ligatures
+    <br>Proposed for Unicode 10
+  </a>
+</div>
 </body>
 </html>
