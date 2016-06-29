@@ -1,7 +1,7 @@
 ## SignWriting Character Viewer
 - - - 
-> Version 2.0  
-June 28th, 2015
+> Version 2.1  
+June 29th, 2016
 
 The SignWriting Character Viewer shows all of the symbols of the International SignWriting Alphabet 2010 using a variety of character encoding forms to access the glyphs of the [SignWriting 2010 Fonts][29].
 
@@ -69,7 +69,8 @@ Feedback, bug reports, and patches are welcomed.
 
 Version History
 ------------------
-* 2.0 - Jun 25th, 2016: version 2 with Unicode 10 proposal on Plane 4
+* 2.1 - Jun 29th, 2016: signtext and plane 4 headers
+* 2.0 - Jun 28th, 2016: version 2 with Unicode 10 proposal on Plane 4
 * 1.0 - Aug 12th, 2015: initial release with Unicode 8, Plane 15 characters, and Plane 16 characters.
 
 [19]: http://signbank.org/iswa
