@@ -1,5 +1,5 @@
 /**
-* SignWriting Character Viewer v2.0
+* SignWriting Character Viewer v2.1
 * https://github.com/Slevinski/SignWriting_Character_Viewer
 * https://slevinski.github.io/SignWriting_Character_Viewer
 * Copyright (c) 2007-2016, Stephen E Slevinski Jr
@@ -128,7 +128,7 @@ table.view = function(ctrl){
     row.push(['th.prime',urlSet=='key'?baseKey:urlSet=='code'?'':'U+' + uni]);
     for(var c = 0; c < 6; c++) {
       fills[c]= (urlSet=='key')?c.toString(16):'';
-      row.push(['th',fills[c]?fills[c]:spaces,'','']);
+      row.push(['th',fills[c]?fills[c]:"+" + (c*16).toString(16),'','']);
     }
     data.push(row);
 
@@ -138,7 +138,7 @@ table.view = function(ctrl){
   
     for(var r = 0; r < 16; r++) {
       row = [];
-      row.push(['th', rots[r]?rots[r]:spaces,'','']);
+      row.push(['th', rots[r]?rots[r]:"+" + r.toString(16).toUpperCase(),'','']);
       for(var c = 0; c < 6; c++) {
         key = baseKey + c.toString(16) + r.toString(16);
         //except for FireFox, view:'key" is slow...
