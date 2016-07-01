@@ -10,16 +10,6 @@
     padding-top: 10%;
     padding-bottom: 10%;
   }
-  img {
-    valign:top;
-  }
-  #sp3-logo {
-    width: 173px;
-    height: 173px;
-  }
-  svg {
-    overflow: visible;
-  }
 
   @font-face {
     font-family: "SignWriting 2010";
@@ -45,7 +35,7 @@
     writing-mode: vertical-lr;
     font-size: 0%;
     border-left: 1px solid blue;
-    height: 95%;
+    height: 93%;
   }
   div#signtext {
     transform-origin: top left;
@@ -55,8 +45,8 @@
     bottom': '0';
     right': '0';
     overflow: hidden;
+    background-color: white;
   }
-
   span.outside {
     border-left: 1px solid blue;
     vertical-align: top;
@@ -76,10 +66,51 @@
     vertical-align: middle;
     padding: 20px;
   }
-  #fsw, #zoom {
+  #fsw {
     width:98%;
     margin-bottom: 1%;
   }
+  #zoom {
+    width: 88%;
+    valign: top;
+    margin-bottom: 1%;
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  #dozenhours {
+    width: 10%;
+    valign: top;
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  div#signtext.midnight {
+    background-color: black;
+  }
+  
+  div#signtext.midnight div.sign svg g text.sym-line {
+    fill: white !important;
+  }
+
+  div#signtext.midnight div.sign svg g text.sym-fill {
+    fill: black !important;
+  }
+
+  div#signtext.midnight {
+    border-left: 1px solid yellow;
+  }
+
+  div#signtext.midnight span.outside {
+    border-left: 1px solid yellow;
+  }
+
+  div#signtext.midnight span.inside {
+    border-left: 1px dashed white;
+  }
+
+ 
+  
   </style>
   <script src="sw10.min.js"></script>
 </head>
@@ -102,16 +133,11 @@
   </a>
 </div>
 <div>
-  <form class="form-horizontal" role="form">
-    <div class="form-group">
-      <label for="fsw" class="col-sm-3 control-label">Formal SignWriting</label>
-      <div class="col-sm-9">
-        <input type="fsw" class="form-control" id="fsw" placeholder="enter Formal SignWriting" oninput="fswChange();" value="M528x518S15a07472x487S1f010490x503S26507515x483 M516x515S1e020493x485S21901485x493 S38800464x496 R518x518S2ff00482x483S15a10494x432S22a04494x464S32107482x483 S38700463x496 M571x518S32107482x483S15a37548x494S15a37522x494 M543x546S15008457x503S15000518x503S34400482x483S26a16484x519S26a02502x519 M521x518S2ff00482x483S10612495x457S22f04488x477 S38700463x496 R571x518S32107482x483S15a37548x494S15a37522x494 R534x532S14c30508x468S14c38468x468S2a204511x504S2a21c466x504 R510x537S20302494x463S2030a490x480S20340495x505S20348490x522 R526x548S30124482x477S26500512x519S10010486x518 M527x524S18741490x477S18706498x501S2e834474x492 M526x536S15a50474x465S15a31479x513S24103494x482 M541x518S2ff00482x483S15a11518x485 M571x518S32107482x483S15a37548x494S15a37522x494 M524x525S26501482x476S14c19477x496S15a01501x502 M538x529S22a14484x500S1150a463x472S20500485x518S20500504x518S20500486x486S20500504x485S22a04502x500S11502508x472 M521x518S2ff00482x483S10612495x457S22f04488x477 S38900464x493 L528x534S1ce40506x472S1ce48473x494S2b711481x467S2c604499x508 L544x516S18217519x485S1821f465x485S20500456x505S2d600487x488S20500534x505 L546x518S2ff00482x483S19a10518x469S19a18453x471S22f03508x484S22f15470x486 L554x518S2ff00482x483S1ce17527x491S26b00523x469 M571x518S32107482x483S15a37548x494S15a37522x494 M521x524S1150a491x509S11520506x476S2e50c479x479 M540x520S10011519x490S2ff00482x483S2df08518x462 M551x524S20337504x482S20331476x484S3770b488x497S37713490x498S2891f451x497S28907525x497S20326536x478S20326450x477 M529x538S2e74c472x513S14220498x462S2e700514x497S14228471x478 M518x534S1e141470x506S34600482x483S2ff00482x483 M538x568S2ff00482x483S10011517x488S22a04518x525S15d39493x542S15d51501x545 S38800464x496">
-      </div>
-      <div class="col-sm-9">
-        <input type="range" class="form-control" id="zoom" oninput="zoomChange();" value="30" min="0" max="100" />
-    </div>
-  </form>
+  <p>Formal SignWriting</p>
+  <input type="fsw" class="form-control" id="fsw" placeholder="enter Formal SignWriting" oninput="fswChange();" value="M528x518S15a07472x487S1f010490x503S26507515x483 M516x515S1e020493x485S21901485x493 S38800464x496 R518x518S2ff00482x483S15a10494x432S22a04494x464S32107482x483 S38700463x496 M571x518S32107482x483S15a37548x494S15a37522x494 M543x546S15008457x503S15000518x503S34400482x483S26a16484x519S26a02502x519 M521x518S2ff00482x483S10612495x457S22f04488x477 S38700463x496 R571x518S32107482x483S15a37548x494S15a37522x494 R534x532S14c30508x468S14c38468x468S2a204511x504S2a21c466x504 R510x537S20302494x463S2030a490x480S20340495x505S20348490x522 R526x548S30124482x477S26500512x519S10010486x518 M527x524S18741490x477S18706498x501S2e834474x492 M526x536S15a50474x465S15a31479x513S24103494x482 M541x518S2ff00482x483S15a11518x485 M571x518S32107482x483S15a37548x494S15a37522x494 M524x525S26501482x476S14c19477x496S15a01501x502 M538x529S22a14484x500S1150a463x472S20500485x518S20500504x518S20500486x486S20500504x485S22a04502x500S11502508x472 M521x518S2ff00482x483S10612495x457S22f04488x477 S38900464x493 L528x534S1ce40506x472S1ce48473x494S2b711481x467S2c604499x508 L544x516S18217519x485S1821f465x485S20500456x505S2d600487x488S20500534x505 L546x518S2ff00482x483S19a10518x469S19a18453x471S22f03508x484S22f15470x486 L554x518S2ff00482x483S1ce17527x491S26b00523x469 M571x518S32107482x483S15a37548x494S15a37522x494 M521x524S1150a491x509S11520506x476S2e50c479x479 M540x520S10011519x490S2ff00482x483S2df08518x462 M551x524S20337504x482S20331476x484S3770b488x497S37713490x498S2891f451x497S28907525x497S20326536x478S20326450x477 M529x538S2e74c472x513S14220498x462S2e700514x497S14228471x478 M518x534S1e141470x506S34600482x483S2ff00482x483 M538x568S2ff00482x483S10011517x488S22a04518x525S15d39493x542S15d51501x545 S38800464x496">
+  <br>
+  <input type="button" class="form-control" id="dozenhours"  onclick="cssChange();" value="CSS" />
+  <input type="range" class="form-control" id="zoom" oninput="zoomChange();" value="30" min="0" max="100" />
 </div>
 
 <div id="signtext" class="signtext"></div>
@@ -149,9 +175,14 @@ function fswChange(){
       adj = -adj;
       style += 'border-left: ' + adj + 'px solid transparent;';
     }
-    return '<div class="sign" style="' + style + '">' + sw10.svg(fsw) + '</div>';
+    return '<div class="sign" style="' + style + '">' + sw10.svg(fsw + '-C') + '</div>';
   });
   document.getElementById("signtext").innerHTML = '<span class="outside"><span class="middle"><span class="inside">' + signs.join('') + '</span></span></span>';
+}
+
+function cssChange(){
+  document.getElementById("zoom").scrollIntoView();
+  document.getElementById("signtext").classList.toggle("midnight")
 }
 
 fswChange();
