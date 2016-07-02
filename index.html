@@ -166,8 +166,8 @@ function fswChange(){
     var h = bbox[3]-bbox[2];
     var adj = 1000 - bbox[0] - bbox[1];
     adj += 2; //adjust for center dotted line
-    if (fsw.indexOf('L')>-1) adj -= 150;
-    if (fsw.indexOf('R')>-1) adj += 150;
+    if (fsw.indexOf('L')>-1) adj += 150;
+    if (fsw.indexOf('R')>-1) adj -= 150;
     var style = 'width: ' + w + 'px;height: ' + h + 'px;'
     if (adj>0) {
       style += 'margin-right: ' + adj + 'px;'

@@ -1,16 +1,17 @@
 ## SignWriting Character Viewer
 - - - 
-> Version 2.3  
-July 1st, 2016
+> Version 2.3.1  
+July 2nd, 2016
 
 The SignWriting Character Viewer shows all of the symbols of the International SignWriting Alphabet 2010 using a variety of character encoding forms to access the glyphs of the [SignWriting 2010 Fonts][29].
  
 The main index page contains links for both version 1 and 2.
 The main index uses the SignWriting 2010 JavaScript library (7 KB zipped) to convert a live Formal SignWriting string into HTML, CSS, SVG and TTF.
- * [SignWriting Character Viewer Index][67]  (2 KB each of CSS, HTML, and custom JavaScript)
+ * [SignWriting Character Viewer Index][67]  
+ * [Available as 2 KB each of CSS, HTML, and custom JavaScript at CodePen.io][88]  
 
 
-The SignWriting Character Viewer versions 1 and 2 uses HTML, CSS, and JavaScript with TrueType Font files to display 
+The SignWriting Character Viewer versions 1 and 2 use HTML, CSS, and JavaScript with TrueType Font files for display.
 
 ### Version 2 Character Encoding Forms
  * [SignWriting Character Viewer v2][69]  
@@ -73,6 +74,7 @@ Feedback, bug reports, and patches are welcomed.
 
 Version History
 ------------------
+* 2.3.1 - Jul 1st, 2016: fix for index page LR lanes
 * 2.3 - Jul 1st, 2016: css for signtext
 * 2.2 - Jun 29th, 2016: zoom slider
 * 2.1 - Jun 29th, 2016: signtext and plane 4 headers
@@ -87,3 +89,4 @@ Version History
 [67]: https://slevinski.github.io/SignWriting_Character_Viewer/
 [68]: https://slevinski.github.io/SignWriting_Character_Viewer/SignWriting_Character_Viewer.html
 [69]: https://slevinski.github.io/SignWriting_Character_Viewer/SignWriting_Character_Viewer_2.html
+[88]: http://codepen.io/Slevinski/full/XKRPzm/
