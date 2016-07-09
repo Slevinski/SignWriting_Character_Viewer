@@ -1,7 +1,7 @@
 ## SignWriting Character Viewer
 - - - 
-> Version 2.3.1  
-July 2nd, 2016
+> Version 2.4.0  
+July 9th, 2016
 
 The SignWriting Character Viewer shows all of the symbols of the International SignWriting Alphabet 2010 using a variety of character encoding forms to access the glyphs of the [SignWriting 2010 Fonts][29].
  
@@ -74,6 +74,7 @@ Feedback, bug reports, and patches are welcomed.
 
 Version History
 ------------------
+* 2.4.0 - Jul 9th, 2016: added cursor stub and function
 * 2.3.1 - Jul 1st, 2016: fix for index page LR lanes
 * 2.3 - Jul 1st, 2016: css for signtext
 * 2.2 - Jun 29th, 2016: zoom slider

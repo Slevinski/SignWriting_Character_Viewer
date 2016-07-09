@@ -109,7 +109,22 @@
     border-left: 1px dashed white;
   }
 
- 
+
+div.blinking-cursor svg g text {
+    animation: blink 1s ease-out infinite;
+}
+
+div.sign.blinking-cursor {
+  padding: 0;
+  height: 0;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 1; }
+  51% { opacity: 0; }
+  100% { opacity: 0; }
+}
   
   </style>
   <script src="sw10.min.js"></script>
@@ -134,7 +149,7 @@
 </div>
 <div>
   <p>Formal SignWriting</p>
-  <input type="fsw" class="form-control" id="fsw" placeholder="enter Formal SignWriting" oninput="fswChange();" value="M528x518S15a07472x487S1f010490x503S26507515x483 M516x515S1e020493x485S21901485x493 S38800464x496 R518x518S2ff00482x483S15a10494x432S22a04494x464S32107482x483 S38700463x496 M571x518S32107482x483S15a37548x494S15a37522x494 M543x546S15008457x503S15000518x503S34400482x483S26a16484x519S26a02502x519 M521x518S2ff00482x483S10612495x457S22f04488x477 S38700463x496 R571x518S32107482x483S15a37548x494S15a37522x494 R534x532S14c30508x468S14c38468x468S2a204511x504S2a21c466x504 R510x537S20302494x463S2030a490x480S20340495x505S20348490x522 R526x548S30124482x477S26500512x519S10010486x518 M527x524S18741490x477S18706498x501S2e834474x492 M526x536S15a50474x465S15a31479x513S24103494x482 M541x518S2ff00482x483S15a11518x485 M571x518S32107482x483S15a37548x494S15a37522x494 M524x525S26501482x476S14c19477x496S15a01501x502 M538x529S22a14484x500S1150a463x472S20500485x518S20500504x518S20500486x486S20500504x485S22a04502x500S11502508x472 M521x518S2ff00482x483S10612495x457S22f04488x477 S38900464x493 L528x534S1ce40506x472S1ce48473x494S2b711481x467S2c604499x508 L544x516S18217519x485S1821f465x485S20500456x505S2d600487x488S20500534x505 L546x518S2ff00482x483S19a10518x469S19a18453x471S22f03508x484S22f15470x486 L554x518S2ff00482x483S1ce17527x491S26b00523x469 M571x518S32107482x483S15a37548x494S15a37522x494 M521x524S1150a491x509S11520506x476S2e50c479x479 M540x520S10011519x490S2ff00482x483S2df08518x462 M551x524S20337504x482S20331476x484S3770b488x497S37713490x498S2891f451x497S28907525x497S20326536x478S20326450x477 M529x538S2e74c472x513S14220498x462S2e700514x497S14228471x478 M518x534S1e141470x506S34600482x483S2ff00482x483 M538x568S2ff00482x483S10011517x488S22a04518x525S15d39493x542S15d51501x545 S38800464x496">
+  <input type="fsw" class="form-control" id="fsw" placeholder="enter Formal SignWriting" oninput="fswChange();" onclick="cursorChange();" onkeydown="cursorChange();" onkeyup="cursorChange();" value="M528x518S15a07472x487S1f010490x503S26507515x483 M516x515S1e020493x485S21901485x493 S38800464x496 R518x518S2ff00482x483S15a10494x432S22a04494x464S32107482x483 S38700463x496 M571x518S32107482x483S15a37548x494S15a37522x494 M543x546S15008457x503S15000518x503S34400482x483S26a16484x519S26a02502x519 M521x518S2ff00482x483S10612495x457S22f04488x477 S38700463x496 R571x518S32107482x483S15a37548x494S15a37522x494 R534x532S14c30508x468S14c38468x468S2a204511x504S2a21c466x504 R510x537S20302494x463S2030a490x480S20340495x505S20348490x522 R526x548S30124482x477S26500512x519S10010486x518 M527x524S18741490x477S18706498x501S2e834474x492 M526x536S15a50474x465S15a31479x513S24103494x482 M541x518S2ff00482x483S15a11518x485 M571x518S32107482x483S15a37548x494S15a37522x494 M524x525S26501482x476S14c19477x496S15a01501x502 M538x529S22a14484x500S1150a463x472S20500485x518S20500504x518S20500486x486S20500504x485S22a04502x500S11502508x472 M521x518S2ff00482x483S10612495x457S22f04488x477 S38900464x493 L528x534S1ce40506x472S1ce48473x494S2b711481x467S2c604499x508 L544x516S18217519x485S1821f465x485S20500456x505S2d600487x488S20500534x505 L546x518S2ff00482x483S19a10518x469S19a18453x471S22f03508x484S22f15470x486 L554x518S2ff00482x483S1ce17527x491S26b00523x469 M571x518S32107482x483S15a37548x494S15a37522x494 M521x524S1150a491x509S11520506x476S2e50c479x479 M540x520S10011519x490S2ff00482x483S2df08518x462 M551x524S20337504x482S20331476x484S3770b488x497S37713490x498S2891f451x497S28907525x497S20326536x478S20326450x477 M529x538S2e74c472x513S14220498x462S2e700514x497S14228471x478 M518x534S1e141470x506S34600482x483S2ff00482x483 M538x568S2ff00482x483S10011517x488S22a04518x525S15d39493x542S15d51501x545 S38800464x496">
   <br>
   <input type="button" class="form-control" id="dozenhours"  onclick="cssChange();" value="CSS" />
   <input type="range" class="form-control" id="zoom" oninput="zoomChange();" value="30" min="0" max="100" />
@@ -177,7 +192,7 @@ function fswChange(){
     }
     return '<div class="sign" style="' + style + '">' + sw10.svg(fsw + '-C') + '</div>';
   });
-  document.getElementById("signtext").innerHTML = '<span class="outside"><span class="middle"><span class="inside">' + signs.join('') + '</span></span></span>';
+  document.getElementById("signtext").innerHTML = '<span class="outside"><span class="middle"><span class="inside"><div class="sign blinking-cursor">' + sw10.svg('M524x501S37a06476x499-Z2') + '</div>' + signs.join('') + '</span></span></span>';
 }
 
 function cssChange(){
@@ -187,6 +202,142 @@ function cssChange(){
 
 fswChange();
 
+function cursorChange(){
+  console.log(cursorPosition("fsw"));
+}
+
+function cursorPosition(id) {
+
+	var textarea = document.getElementById(id);
+	var pos = '';
+	textarea.focus();
+
+	// get selection in firefox, opera, …
+	if (typeof(textarea.selectionStart) == 'number') {
+		pos = textarea.selectionStart;
+	}
+	
+	else if (document.selection) {
+	
+		var selection_range = document.selection.createRange().duplicate();
+
+		if (selection_range.parentElement() == textarea) {
+
+			// Check that the selection is actually in our textarea
+			// Create three ranges, one containing all the text before the selection,
+			// one containing all the text in the selection (this already exists), and one containing all
+			// the text after the selection.
+			var before_range = document.body.createTextRange();
+			before_range.moveToElementText(textarea); // Selects all the text
+			before_range.setEndPoint("EndToStart", selection_range); // Moves the end where we need it
+
+			var after_range = document.body.createTextRange();
+			after_range.moveToElementText(textarea); // Selects all the text
+			after_range.setEndPoint("StartToEnd", selection_range); // Moves the start where we need it
+
+			var before_finished = false, selection_finished = false, after_finished = false;
+			var before_text, untrimmed_before_text, selection_text, untrimmed_selection_text, after_text, untrimmed_after_text;
+
+			// Load the text values we need to compare
+			before_text = untrimmed_before_text = before_range.text;
+			selection_text = untrimmed_selection_text = selection_range.text;
+			after_text = untrimmed_after_text = after_range.text;
+
+			// Check each range for trimmed newlines by shrinking the range by 1 character and seeing
+			// if the text property has changed. If it has not changed then we know that IE has trimmed
+			// a \r\n from the end.
+			do {
+				
+				if (!before_finished) {
+	
+					if (before_range.compareEndPoints("StartToEnd", before_range) == 0) {
+						before_finished = true;
+					}
+					
+					else {
+						
+						before_range.moveEnd("character", -1);
+						
+						if (before_range.text == before_text) {
+							untrimmed_before_text += "\r\n";
+						}
+						
+						else {
+							before_finished = true;
+						}
+					
+					}
+				
+				}
+	
+				if (!selection_finished) {
+	
+					if (selection_range.compareEndPoints("StartToEnd", selection_range) == 0) {
+						selection_finished = true;
+					}
+				
+					else {
+					
+						selection_range.moveEnd("character", -1);
+					
+						if (selection_range.text == selection_text) {
+							untrimmed_selection_text += "\r\n";
+						}
+					
+						else {
+							selection_finished = true;
+						}
+	
+					}
+			
+				}
+	
+				if (!after_finished) {
+	
+					if (after_range.compareEndPoints("StartToEnd", after_range) == 0) {
+						after_finished = true;
+					}
+					
+					else {
+				
+						after_range.moveEnd("character", -1);
+	
+						if (after_range.text == after_text) {
+							untrimmed_after_text += "\r\n";
+						}
+						
+						else {
+							after_finished = true;
+						}
+	
+					}
+	
+				}
+
+			} 
+			
+			while ((!before_finished || !selection_finished || !after_finished));
+
+			// Untrimmed success test to make sure our results match what is actually in the textarea
+			// This can be removed once you're confident it's working correctly
+			var untrimmed_text = untrimmed_before_text + untrimmed_selection_text + untrimmed_after_text;
+			var untrimmed_successful = false;
+	
+			if (textarea.value == untrimmed_text) {
+				untrimmed_successful = true;
+			}
+	
+			// ** END Untrimmed success test
+			var startPoint = untrimmed_before_text.length;
+			pos = startPoint;
+
+		}
+	
+	}
+	
+	return pos;
+
+}
 </script>
 </body>
 </html>

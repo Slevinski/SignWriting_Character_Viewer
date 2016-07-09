@@ -125,7 +125,7 @@ table.view = function(ctrl){
     ];
 
     row=[];
-    row.push(['th.prime',urlSet=='key'?baseKey:urlSet=='code'?'':'U+' + uni]);
+    row.push(['th.prime',urlSet=='key'?baseKey:'U+' + uni]);
     for(var c = 0; c < 6; c++) {
       fills[c]= (urlSet=='key')?c.toString(16):'';
       row.push(['th',fills[c]?fills[c]:"+" + (c*16).toString(16),'','']);
@@ -219,7 +219,7 @@ window.onload = function () {
     cssCheck = setInterval(function(){
       if (sw10.size("S10000")){
         clearInterval(cssCheck);
-        m.redraw();1
+        m.redraw();
       }
     },100);
   }
