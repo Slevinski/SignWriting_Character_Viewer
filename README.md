@@ -1,7 +1,7 @@
 ## SignWriting Character Viewer
 - - - 
-> Version 2.4.0  
-July 9th, 2016
+> Version 2.5.0  
+September 6th, 2017
 
 The SignWriting Character Viewer shows all of the symbols of the International SignWriting Alphabet 2010 using a variety of character encoding forms to access the glyphs of the [SignWriting 2010 Fonts][29].
  
@@ -16,19 +16,22 @@ The SignWriting Character Viewer versions 1 and 2 use HTML, CSS, and JavaScript 
 ### Version 2 Character Encoding Forms
  * [SignWriting Character Viewer v2][69]  
 
-For the 2016 font development work, the font design has been streamlined to simplify the design to eliminate Private Use Area characters and eliminate the use of feature files with almost 100,000 ligature statements
+For the 2016 font development work, the font design has been streamlined to simplify the design 
+to eliminate Private Use Area characters and eliminate the use of feature files with almost 100,000 ligature statements.
+For 2017 font work, additional Unicode characters were added to complete the encoding of SignWriting text.
 
 Symbol Keys  
 S10000..S38b07; ISWA 2010 Symbol Keys  
 ASCII characters, UTF-8 compatible.  
 [Symbol keys][19] used as glyph names in the font files.
 
-Unicode 10  
-Plane 4; Sutton SignWriting  
+SignWriting in Unicode (SWU)
+experimental encoding supported by the Center for Sutton Movement Writing, inc.  
+Overwrites the Sutton SignWriting block and uses Plane 4.  
 Codepoints used as glyph id in the font files.
 Uses 1 character per symbol.
 
-The characters conversions implementation can be found in the [SignWriting 2010 JavaScript Library][60] in the "sw10.js" file under functions "uni10" for the Unicode 10 proposal.
+The characters conversions implementation can be found in the [Sutton SignWriting JavaScript Library][61] in the "SuttonSignWriting.js" file under functions "ssw.opt" and "ssw.uni".
 
 
 ### Version 1 Character Encoding Forms 
@@ -58,11 +61,10 @@ The characters conversions implementation can be found in the [SignWriting 2010 
 
 Reference
 ----------
-The character encodings used in the SignWriting Character Viewer are defined in an Internet Draft submitted to the IETF: [draft-slevinski-signwriting-text][26].
+The character encodings used in the SignWriting Character Viewer are defined in an Internet Draft submitted to the IETF: [draft-slevinski-formal-signwriting][27].
 The document is improved and resubmitted every 6 months.
-The character design has been stable since January 12, 2012.
-The current version of the Internet Draft is 07.
-The next version is planned for November 2016 and will contain the Unicode 10 Proposal.
+The ASCII character design has been stable since January 12th, 2012.
+The Unicode character design has been stable since July 14th, 2017.
 
 - - -
 
@@ -74,6 +76,7 @@ Feedback, bug reports, and patches are welcomed.
 
 Version History
 ------------------
+* 2.5.0 - Sept 6th, 2017: updated v2 for SWU and new fonts
 * 2.4.0 - Jul 9th, 2016: added cursor stub and function
 * 2.3.1 - Jul 1st, 2016: fix for index page LR lanes
 * 2.3 - Jul 1st, 2016: css for signtext
@@ -84,8 +87,10 @@ Version History
 
 [19]: http://signbank.org/iswa
 [26]: http://tools.ietf.org/html/draft-slevinski-signwriting-text
+[27]: http://tools.ietf.org/html/draft-slevinski-formal-signwriting
 [29]: https://github.com/Slevinski/signwriting_2010_fonts
 [60]: https://github.com/Slevinski/sw10js
+[61]: https://github.com/Slevinski/SuttonSignWriting
 [64]: http://www.unicode.org/versions/Unicode8.0.0/
 [67]: https://slevinski.github.io/SignWriting_Character_Viewer/
 [68]: https://slevinski.github.io/SignWriting_Character_Viewer/SignWriting_Character_Viewer.html

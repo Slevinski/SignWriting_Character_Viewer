@@ -1,5 +1,5 @@
 /**
-* SignWriting Character Viewer v2.1
+* SignWriting Character Viewer v2.5
 * https://github.com/Slevinski/SignWriting_Character_Viewer
 * https://slevinski.github.io/SignWriting_Character_Viewer
 * Copyright (c) 2007-2016, Stephen E Slevinski Jr
@@ -25,7 +25,7 @@ function urlUI(lang){
 function tt(args){
   text = t.apply(this,arguments);
   text = text.replace(/@@/g,'');
-  return m.trust(sw10.svg(text) || '<p>' + text + '</p>');
+  return m.trust(ssw.svg(text) || '<p>' + text + '</p>');
 }
 
 window.onhashchange = hashChange;
@@ -46,7 +46,7 @@ function hashChange(event){
     vars[hash[0]] = hash[1];
   }
   var newUI = vars['ui']?vars['ui']:localStorage['langUI']?localStorage['langUI']:'en';
-  var newSet = vars['set']?vars['set']:'key';
+  var newSet = vars['set']?vars['set']:'swu';
   var newSym = vars['sym']?vars['sym']:'';
   if (newUI==localStorage['langUI'] && newSet==urlSet && newSym==urlSym) return;
   urlUI(newUI);
@@ -66,7 +66,7 @@ header.view = function(ctrl){
     m("div.topright",m("a.topright[href='SignWriting_Character_Viewer.html']", "v1")),
     m('div.section',[
       m('div.btn',{class:urlSet=='key'?'selected':'',onclick:function(e){urlSet='key';urlSym='';hashSet();}},tt('Symbols Keys')),
-      m('div.btn',{class:urlSet=='uni10'?'selected':'',onclick:function(e){urlSet='uni10';urlSym='';hashSet();}},tt('Plane 4'))
+      m('div.btn',{class:urlSet=='swu'?'selected':'',onclick:function(e){urlSet='swu';urlSym='';hashSet();}},tt('Symbol Codes'))
       ])
   ];
 };
@@ -89,7 +89,7 @@ table.view = function(ctrl){
         prev = baseKey==first?first:'S'+(parseInt(baseKey.slice(1,4),16)-1).toString(16);
         next = baseKey==last?last:'S'+(parseInt(baseKey.slice(1,4),16)+1).toString(16);
         break;
-      case "uni10":
+      case "swu":
         code = parseInt(urlSym.slice(1,6),16)-1;
         baseKey = "S" + parseInt(code/96+256).toString(16);
         uni = urlSym;
@@ -101,21 +101,21 @@ table.view = function(ctrl){
       default:
         return;
     }
-    var cat = sw10.structure('category');
-    var catKey = sw10.structure('category',baseKey);
-    var group = sw10.structure('group');
-    var groupKey = sw10.structure('group',baseKey);
+    var cat = ssw.structure('category');
+    var catKey = ssw.structure('category',baseKey);
+    var group = ssw.structure('group');
+    var groupKey = ssw.structure('group',baseKey);
     
     nav=[
     m("table",{class:"structure"},m('tr',cat.map(function(cell){
-      attr = {title:t('cat_' + cell),onclick:function(e){urlSym=urlSet=='key'?cell:sw10.uni10(cell+'00',true);hashSet();}};
+      attr = {title:t('cat_' + cell),onclick:function(e){urlSym=urlSet=='key'?cell:ssw.uni(cell+'00','4',true);hashSet();}};
       return m(cell==catKey?'th':'td',attr,'');
     }))),
     m("table",{class:"structure"},m('tr',group.map(function(cell){
-      attr = {title:t('group_' + cell),onclick:function(e){urlSym=urlSet=='key'?cell:((sw10.uni10(cell+'00',true)));hashSet();}};
+      attr = {title:t('group_' + cell),onclick:function(e){urlSym=urlSet=='key'?cell:((ssw.uni(cell+'00','4',true)));hashSet();}};
       return m(cell==groupKey?'th':'td',attr,'');
     }))),
-      m('div.title',(urlSet=='uni10')?tt("uni_" + baseKey):tt("base_" + baseKey)),
+      m('div.title',(urlSet=='swu')?tt("uni_" + baseKey):tt("base_" + baseKey)),
       m('div.nav',
         m('div.btn',{onclick:function(e){urlSym=first;hashSet();}},m.trust(tt('firstPage'))),
         m('div.btn',{onclick:function(e){urlSym=prev;hashSet();}},m.trust(tt('prevPage'))),
@@ -142,10 +142,14 @@ table.view = function(ctrl){
       for(var c = 0; c < 6; c++) {
         key = baseKey + c.toString(16) + r.toString(16);
         //except for FireFox, view:'key" is slow...
-        svg = sw10.svg(key,{view:'code',copy:urlSet});
+        svg = ssw.svg(key,{view:'code',copy:urlSet});
         if (svg){
-          tooltip = urlSet=='key'?key:'U+'+(parseInt(uni,16) + c*16+r).toString(16).toUpperCase();
-          row.push(['td',svg,tooltip,'']);
+          if (urlSet=='key'){
+            row.push(['td',svg,key,'']);
+          } else {
+            tooltip = urlSet=='key'?key:'U+'+(parseInt(uni,16) + c*16+r).toString(16).toUpperCase();
+            row.push(['td.codepoint',ssw.uni(key,'4'),'U+'+ssw.uni(key,'4',"hex")+' '+ssw.uni(key,'4'),'']);
+          }
         } else {
           row.push(['td.invalid','','','']);
         }
@@ -153,15 +157,15 @@ table.view = function(ctrl){
       data.push(row);
     }
   } else {
-    var cat = sw10.structure('category');
-    var group = sw10.structure('group');
+    var cat = ssw.structure('category');
+    var group = ssw.structure('group');
     nav=[
     m("table",{class:"structure"},m('tr',cat.map(function(cell){
-      attr = {title:t('cat_' + cell),onclick:function(e){urlSym=urlSet=='key'?cell:((sw10.code(cell+'00',true)));hashSet();}};
+      attr = {title:t('cat_' + cell),onclick:function(e){urlSym=urlSet=='key'?cell:((ssw.code(cell+'00',true)));hashSet();}};
       return m('td',attr,'');
     }))),
     m("table",{class:"structure"},m('tr',group.map(function(cell){
-      attr = {title:t('group_' + cell),onclick:function(e){urlSym=urlSet=='key'?cell:((sw10.uni10(cell+'00',true)));hashSet();}};
+      attr = {title:t('group_' + cell),onclick:function(e){urlSym=urlSet=='key'?cell:((ssw.uni(cell+'00','4',true)));hashSet();}};
       return m('td',attr,'');
     })))
     ];
@@ -174,21 +178,26 @@ table.view = function(ctrl){
     for(var r = 0; r < 41; r++) {
       row = [];
       rowCode = 256+(r*16);
-      uni = urlSet=='uni10'?'4D' + (r+16+112).toString(16).toUpperCase():'FD' + (r+16+115).toString(16).toUpperCase();
+      uni = urlSet=='swu'?'4D' + (r+16+112).toString(16).toUpperCase():'FD' + (r+16+115).toString(16).toUpperCase();
       key =  'S' + rowCode.toString(16).slice(0,2);
       rowTitle = urlSet=='key'?key+'x':spaces
       row.push(['th', rowTitle,'','']);
       for(var c = 0; c < 16; c++) {
         baseKey = "S" + (rowCode+c).toString(16);
-        key = sw10.view(baseKey,urlSet=='uni10');
+        key = ssw.view(baseKey);
         //except for FireFox, view:'key" is slow...
-        svg = sw10.svg(key,{view:'code',copy:urlSet});
+        svg = ssw.svg(key,{view:'code',copy:urlSet});
         if (svg){
-          cellSym = urlSet=='key'?baseKey:sw10.uni10(baseKey+'00',true);
-          tooltip = urlSet!='key'?'U+':'';
-          tooltip += cellSym + ': ';
-          tooltip += (urlSet=='uni10')?t("uni_" + baseKey):t("base_" + baseKey);
-          row.push(['td',svg,tooltip,cellSym]);
+          if (urlSet=='key'){
+            tooltip = baseKey + ': ';
+            tooltip += t("base_" + baseKey);
+            row.push(['td',svg,tooltip,baseKey]);
+          } else {
+            cellSym = ssw.uni(baseKey+'00','4',true);
+            tooltip = 'U+' + cellSym + ': ';
+            tooltip += t("uni_" + baseKey);
+            row.push(['td.codepoint',ssw.uni(key,'4'),tooltip,cellSym]);
+          }
         } else {
           row.push(['td.invalid','','','']);
         }
@@ -215,9 +224,9 @@ m.mount(document.getElementById("table"), table);
 var cssCheck;
 window.onload = function () {
   var cnt = 0;
-  if (!sw10.size("S10000")){
+  if (!ssw.size("S10000")){
     cssCheck = setInterval(function(){
-      if (sw10.size("S10000")){
+      if (ssw.size("S10000")){
         clearInterval(cssCheck);
         m.redraw();
       }
