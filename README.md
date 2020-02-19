@@ -1,7 +1,11 @@
 ## SignWriting Character Viewer
 - - - 
-> Version 2.5.0  
-September 6th, 2017
+> Version 2.6.0  
+February 19th, 2020
+
+> AUTHOR: https://SteveSlevinski.me  
+> SUPPORT: https://www.patreon.com/signwriting
+
 
 The SignWriting Character Viewer shows all of the symbols of the International SignWriting Alphabet 2010 using a variety of character encoding forms to access the glyphs of the [SignWriting 2010 Fonts][29].
  
@@ -25,14 +29,13 @@ S10000..S38b07; ISWA 2010 Symbol Keys
 ASCII characters, UTF-8 compatible.  
 [Symbol keys][19] used as glyph names in the font files.
 
-SignWriting in Unicode (SWU)
-experimental encoding supported by the Center for Sutton Movement Writing, inc.  
-Overwrites the Sutton SignWriting block and uses Plane 4.  
-Codepoints used as glyph id in the font files.
-Uses 1 character per symbol.
+SignWriting in Unicode (SWU) overwrites the Sutton SignWriting block in Unicode and uses Plane 4 codepoints as glyph id in the font files.
 
-The characters conversions implementation can be found in the [Sutton SignWriting JavaScript Library][61] in the "SuttonSignWriting.js" file under functions "ssw.opt" and "ssw.uni".
-
+The characters conversions implementation can be found in the JavaScript package ```@sutton-signwriting/core```, available for node and browsers.
+This package supports general processing of SignWriting text with a modular function library.  
+* [source](https://github.com/sutton-signwriting/core)
+* [distribution](https://unpkg.com/browse/@sutton-signwriting/core/)
+* [documentation](https://sutton-signwriting.github.io/core/)
 
 ### Version 1 Character Encoding Forms 
 * [SignWriting Character Viewer v1][68]
@@ -76,6 +79,7 @@ Feedback, bug reports, and patches are welcomed.
 
 Version History
 ------------------
+* 2.6.0 - Feb 19th, 2020: font cdn update for unpkg
 * 2.5.0 - Sept 6th, 2017: updated v2 for SWU and new fonts
 * 2.4.0 - Jul 9th, 2016: added cursor stub and function
 * 2.3.1 - Jul 1st, 2016: fix for index page LR lanes
